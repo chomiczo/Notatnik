@@ -46,6 +46,9 @@
             this.tłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +98,7 @@
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
+            this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.zapiszJakoToolStripMenuItem_Click);
             // 
             // edycjaToolStripMenuItem
             // 
@@ -159,12 +163,14 @@
             this.czcionkaToolStripMenuItem.Name = "czcionkaToolStripMenuItem";
             this.czcionkaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.czcionkaToolStripMenuItem.Text = "Czcionka";
+            this.czcionkaToolStripMenuItem.Click += new System.EventHandler(this.czcionkaToolStripMenuItem_Click);
             // 
             // tłoToolStripMenuItem
             // 
             this.tłoToolStripMenuItem.Name = "tłoToolStripMenuItem";
             this.tłoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tłoToolStripMenuItem.Text = "Tło";
+            this.tłoToolStripMenuItem.Click += new System.EventHandler(this.tłoToolStripMenuItem_Click);
             // 
             // zamknijToolStripMenuItem
             // 
@@ -180,6 +186,10 @@
             this.openFileDialog1.Filter = "Pliki tekstowe (*.txt)|*.txt|Pliki źródłowe (*.cs)|*.cs|Wszystkie pliki (*.*)|*.*" +
     "";
             this.openFileDialog1.Title = "Wczytaj";
+            // 
+            // fontDialog1
+            // 
+            this.fontDialog1.ShowColor = true;
             // 
             // Form1
             // 
@@ -217,6 +227,9 @@
         private System.Windows.Forms.ToolStripMenuItem czcionkaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tłoToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
 

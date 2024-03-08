@@ -40,5 +40,41 @@ namespace Notatnik
                 //textBox1.Text = str.ReadToEnd();
             }
         }
+
+        private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] tekst = textBox1.Lines;
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter save = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    foreach(string s in tekst) 
+                    {
+                        save.WriteLine(s);
+                    }
+                    save.Close();
+                }
+            }
+        }
+
+        private void tłoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = textBox1.BackColor;
+            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.BackColor = colorDialog1.Color;
+
+            }
+        }
+
+        private void czcionkaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fontDialog1.Font = textBox1.Font;
+            fontDialog1.Color = textBox1.ForeColor;
+            if(fontDialog1.ShowDialog() == DialogResult.OK) {
+                textBox1.Font = fontDialog1.Font;
+                textBox1.ForeColor = fontDialog1.Color;
+            }
+        }
     }
 }
