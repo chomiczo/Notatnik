@@ -76,5 +76,71 @@ namespace Notatnik
                 textBox1.ForeColor = fontDialog1.Color;
             }
         }
+
+        private void zaznaczWszystkoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.SelectAll();
+        }
+
+        private void kopiujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox1.SelectedText))
+                Clipboard.SetText(textBox1.SelectedText);
+        }
+
+        private void cofnijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox1.CanUndo)
+                textBox1.Undo();
+        }
+
+        private void wytnijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox1.SelectedText))
+            {
+                Clipboard.SetText(textBox1.SelectedText);
+                textBox1.SelectedText = "";
+            }
+        }
+
+        private void wklejToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                textBox1.SelectedText = Clipboard.GetText();
+            }
+        }
+
+        private void usuńToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.SelectedText = "";
+        }
+
+        // Dodano obsługę skrótów klawiszowych (Ctrl + X, Ctrl + C, Ctrl + V, Ctrl + Z)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.X))
+            {
+                wytnijToolStripMenuItem_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.C))
+            {
+                kopiujToolStripMenuItem_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.V))
+            {
+                wklejToolStripMenuItem_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.Z))
+            {
+                cofnijToolStripMenuItem_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
